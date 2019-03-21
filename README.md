@@ -4,3 +4,19 @@ We analyzed around 25000 Amazon reviews for mobile phones. Firstly, we scraped t
 
 Here's the link to our paper if you are interested in reading in depth.
 Link: https://www.ijera.com/papers/vol8no9/p3/G0809035357.pdf
+
+
+# Steps
+
+1. Firstly, execute the file train_random_forest.py. This will train a random forest classifier on the reviews present in the train_data.csv file present in the data_rf/ folder.
+
+2. Then, run the file preprocess.py to create the clusters for each of the features like camera, battery, memeory etc. This same file can be used for getting the output frequency of the words. You can find the part of code in the commented section. We have already created the clusters for each of the features which you will be able to find under sentence_clusters_json/ directory
+
+3. Later, use the trained model (random forest) to get the true labels for your dataset. So our dataset will act as the test dataset for the model. Use the file test_randomforest_finalclusters.py for the same. We have already created the labelled review sentences which you can directly get from the Labelled_Reviews/ directory.
+
+4. This labelled reviews will be used to train our actual network for sentiment analysis. Refer files train_sentiment_2class.py and train_sentiment_3class.py for getting an idea about the models trained for 3 classes (positive, negative and neutral) and 2 classes ( positive and negative). You can see how your model is behaving using the file plot_loss_curve.py.
+Refer the plot of our model after 50 epochs.
+
+5. Once our sentiment model is trained, we group together the final reviews from each class for a particular feature for ex. camera, battery etc. and summarize it using Branch and Bound approach. You can refer the file summarization.py for this.
+
+
